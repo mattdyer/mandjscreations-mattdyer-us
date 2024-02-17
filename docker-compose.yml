@@ -1,0 +1,22 @@
+version: '3'
+services:
+ web:
+  build:
+   context: ./
+   dockerfile: web.docker
+  container_name: mandjsphp
+  volumes:
+    - ./:/var/www/html
+  ports:
+   - "8001:80"
+ db:
+  build:
+    context: ./
+    dockerfile: db.docker
+  container_name: mandjsdb
+  command: --default-authentication-plugin=mysql_native_password
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: example
+  ports:
+   - "33061:3306"
