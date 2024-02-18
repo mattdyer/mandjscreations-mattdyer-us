@@ -1,0 +1,3 @@
+<?php
+	$AdminNavLinks = $site->GetAdminNavLinks();
+?>
