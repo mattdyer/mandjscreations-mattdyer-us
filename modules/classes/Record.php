@@ -30,9 +30,6 @@
 			
 			$this->QueryDatabase = $Database;
 			
-			//print_r($columns->fetch_array(MYSQLI_ASSOC));
-			//exit;
-			
 			while($row = $columns->fetch_array(MYSQLI_ASSOC)){
 				
 				$fulltype = $row['COLUMN_TYPE'];
@@ -76,10 +73,7 @@
 						   WHERE $this->IDColumn = $ID");
 			
 			
-			print_r($record->num_rows());
-			exit;
-			
-			if($record->num_rows() == 0){
+			if($record->num_rows == 0){
 				throw new Exception('No record was found in ' . $this->TableName .  ' for ID ' . $ID);
 			}
 			
@@ -121,7 +115,7 @@
 								($keylist)
 								VALUES
 								($valuelist);");
-				$this->fields[$this->IDColumn] = mysql_insert_id();
+				$this->fields[$this->IDColumn] = $this->mysqli->insert_id;
 			}else{
 				$keyvalues = '';
 				$count = 0;

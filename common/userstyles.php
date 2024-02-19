@@ -1,5 +1,5 @@
 <?php 
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	header('Content-type: text/css');
 ?>
 body{

@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	
 	ob_start();
 		echo '<div>This is the main admin page.</div>';

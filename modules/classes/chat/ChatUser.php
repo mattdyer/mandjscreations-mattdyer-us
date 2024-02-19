@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class ChatUser extends Record{
 		function __construct(){
-			record::__construct('Chat_ChatUsers','mandjscreations','localhost','root','//att1');
+			record::__construct('Chat_ChatUsers','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){
@@ -15,13 +15,13 @@
 		function LoadOrCreatyByUserID($UserID,$Name,$SiteID){
 			$FindUser = $this->DoQuery("SELECT ChatUserID FROM Chat_ChatUsers WHERE UserID = $UserID ORDER BY DateEntered DESC LIMIT 1");
 			
-			if(mysql_num_rows($FindUser) == 0){
+			if($FindUser->num_rows == 0){
 				$this->set('SiteID',$SiteID);
 				$this->set('UserID',$UserID);
 				$this->set('Name',$Name);
 				$this->save();
 			}else{
-				while($row = mysql_fetch_array($FindUser)){
+				while($row = $FindUser->fetch_array()){
 					$this->load($row['ChatUserID']);
 				}
 			}
@@ -44,7 +44,7 @@
 			
 			$Messages = array();
 			
-			while($row = mysql_fetch_array($MessageQuery)){
+			while($row = $MessageQuery->fetch_array()){
 				list($date,$time) = split(' ',$row['DateEntered']);
 				list($hour,$minute,$second) = split(':',$time);
 				if($hour >= 12){
@@ -79,7 +79,7 @@
 			
 			$Messages = array();
 			
-			while($row = mysql_fetch_array($MessageQuery)){
+			while($row = $MessageQuery->fetch_array()){
 				list($date,$time) = split(' ',$row['DateEntered']);
 				list($hour,$minute,$second) = split(':',$time);
 				if($hour >= 12){
@@ -118,7 +118,7 @@
 			
 			$ChatUsers = array();
 			
-			while($row = mysql_fetch_array($ChatUserQuery)){
+			while($row = $ChatUserQuery->fetch_array()){
 				$ChatUser['ChatUserID'] = $row['ChatUserID'];
 				$ChatUser['UserID'] = $row['UserID'];
 				$ChatUser['Name'] = $row['Name'];
@@ -136,7 +136,7 @@
 		
 			$Conversations = array();
 			
-			while($row = mysql_fetch_array($ChatUserQuery)){
+			while($row = $ChatUserQuery->fetch_array()){
 				$Conversation['TotalUsers'] = $row['TotalUsers'];
 				$Conversation['LastPage'] = $row['LastPage'];
 				$Conversations[] = $Conversation;

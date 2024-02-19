@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class LifeSave extends Record{
 		function __construct(){
-			record::__construct('LifeSaves','mandjscreations','localhost','root','//att1');
+			record::__construct('LifeSaves','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){

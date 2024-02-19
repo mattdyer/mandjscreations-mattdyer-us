@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Article extends Record{
 		function __construct(){
-			record::__construct('Articles','mandjscreations','localhost','root','//att1');
+			record::__construct('Articles','mandjscreations','mandjsdb','root','example');
 		}
 		
 		function beforeSave(){

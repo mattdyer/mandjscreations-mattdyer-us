@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Category extends Record{
 		function __construct(){
-			record::__construct('Categories','mandjscreations','localhost','root','//att1');
+			record::__construct('Categories','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function GetCategories(){

@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Message extends Record{
 		function __construct(){
-			record::__construct('Chat_Messages','mandjscreations','localhost','root','//att1');
+			record::__construct('Chat_Messages','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){

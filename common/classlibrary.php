@@ -164,7 +164,7 @@
 	
 	class Site extends Record{
 		function __construct(){
-			record::__construct('Sites','mandjscreations','localhost','root','//att1');
+			record::__construct('Sites','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function GetCategories(){
@@ -184,7 +184,7 @@
 	
 	class Article extends Record{
 		function __construct(){
-			record::__construct('Articles','mandjscreations','localhost','root','//att1');
+			record::__construct('Articles','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){
@@ -196,7 +196,7 @@
 	
 	class Category extends Record{
 		function __construct(){
-			record::__construct('Categories','mandjscreations','localhost','root','//att1');
+			record::__construct('Categories','mandjscreations','mandjsdb','root','example');
 		}
 		
 		function GetCategories(){

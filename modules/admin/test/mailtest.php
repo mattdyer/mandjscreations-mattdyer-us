@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	
 	//define the receiver of the email
 	$to = 'madmatt1220@gmail.com';

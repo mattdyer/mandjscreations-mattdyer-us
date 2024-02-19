@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Invoice extends Record{
 		function __construct(){
-			record::__construct('Business_Invoices','mandjscreations','localhost','root','//att1');
+			record::__construct('Business_Invoices','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){

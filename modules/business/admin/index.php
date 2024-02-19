@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	
 	$Customers = $site->Modules['Business']->GetCustomers();
 	
@@ -22,5 +22,5 @@
  ?>
  
 <?php
-	include("/home/matt/websites/mandjscreations.com/common/admintemplate.php");
+	include("/var/www/html/common/admintemplate.php");
 ?>

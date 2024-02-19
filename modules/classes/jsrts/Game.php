@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Game extends Record{
 		function __construct(){
-			record::__construct('JSRTS_Games','mandjscreations','localhost','root','//att1');
+			record::__construct('JSRTS_Games','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){

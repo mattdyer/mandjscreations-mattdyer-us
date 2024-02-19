@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Comment extends Record{
 		function __construct(){
-			record::__construct('Comments','mandjscreations','localhost','root','//att1');
+			record::__construct('Comments','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){

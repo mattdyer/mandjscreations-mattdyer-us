@@ -1,5 +1,5 @@
 <?php
-	include("/home/matt/websites/mandjscreations.com/modules/templateinit.php");
+	include("/var/www/html/modules/templateinit.php");
 
 	$LeftNavCategories = $site->Modules['Articles']->GetCategories();
 	$PopularArticles = $site->Modules['Articles']->GetPopularArticles();

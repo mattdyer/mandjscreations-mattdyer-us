@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class User extends Record{
 		function __construct(){
-			record::__construct('Users','mandjscreations','localhost','root','//att1');
+			record::__construct('Users','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function SetPassword($Password){

@@ -2,13 +2,13 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Articles extends Record{
 		function __construct(){
-			record::__construct('Articles_Settings','mandjscreations','localhost','root','//att1');
+			record::__construct('Articles_Settings','mandjscreations','mandjsdb','root','example');
 		}
 		
 		function LoadBySiteID($SiteID){
 			$Article_Settings = $this->DoQuery("SELECT SettingsID FROM Articles_Settings WHERE SiteID = " . $SiteID);
 			
-			while($row = mysql_fetch_array($Article_Settings)){
+			while($row = $Article_Settings->fetch_array()){
 				$this->load($row['SettingsID']);
 			}
 		}
@@ -18,7 +18,7 @@
 			
 			$CategoryArray = array();
 			
-			while($row = mysql_fetch_array($Categories)){
+			while($row = $Categories->fetch_array()){
 				$category = LoadClass(SiteRoot . '/modules/classes/articles/Category');
 				$category->load($row['CategoryID']);
 				$CategoryArray[] = $category;
@@ -36,7 +36,7 @@
 			
 			$ArticleArray = array();
 			
-			while($row = mysql_fetch_array($Articles)){
+			while($row = $Articles->fetch_array()){
 				$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');
 				$article->load($row['ArticleID']);
 				$ArticleArray[] = $article;
@@ -55,7 +55,7 @@
 			
 			$ArticleArray = array();
 			
-			while($row = mysql_fetch_array($Articles)){
+			while($row = $Articles->fetch_array()){
 				$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');
 				$article->load($row['ArticleID']);
 				$ArticleArray[] = $article;
@@ -75,7 +75,7 @@
 			
 			$ArticleArray = array();
 			
-			while($row = mysql_fetch_array($Articles)){
+			while($row = $Articles->fetch_array()){
 				$HistoryFound = false;
 				$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');
 				$article->load($row['ArticleID']);

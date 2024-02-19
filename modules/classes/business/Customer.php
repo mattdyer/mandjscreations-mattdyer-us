@@ -2,7 +2,7 @@
 	require_once(SiteRoot . '/modules/classes/Record.php');
 	class Customer extends Record{
 		function __construct(){
-			record::__construct('Business_Customers','mandjscreations','localhost','root','//att1');
+			record::__construct('Business_Customers','mandjscreations','mandjsdb', 'root', 'example');
 		}
 		
 		function beforeSave(){

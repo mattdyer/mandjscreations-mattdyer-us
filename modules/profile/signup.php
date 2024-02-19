@@ -1,5 +1,5 @@
 <?php
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	
 	if (array_key_exists('Signup', $_POST)){
 		if($_POST['Password'] == $_POST['ConfirmPassword'] && strlen($_POST['Email']) > 0 && strlen($_POST['Password']) > 0){

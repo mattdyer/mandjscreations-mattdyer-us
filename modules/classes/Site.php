@@ -46,9 +46,10 @@
 									   ON M.ModuleID = MA.ModuleID
 									   WHERE MA.SiteID = " . $this->get('SiteID'));
 			
-			while($row = mysql_fetch_array($Modules)){
+			while($row = $Modules->fetch_array()){
 				$ClassPath = $row['ClassPath'];
-				$Name = end(split('/',$ClassPath));
+				$ClassParts = explode('/', $ClassPath);
+				$Name = $ClassParts[count($ClassParts) - 1];
 				$this->Modules[$Name] = LoadClass(SiteRoot . $ClassPath);
 				$this->Modules[$Name]->LoadBySiteID($this->get('SiteID'));
 			}
@@ -60,7 +61,7 @@
 			
 			$UserArray = array();
 			
-			while($row = mysql_fetch_array($Users)){
+			while($row = $Users->fetch_array()){
 				$user = LoadClass(SiteRoot . '/modules/classes/User');
 				$user->load($row['UserID']);
 				$UserArray[] = $user;

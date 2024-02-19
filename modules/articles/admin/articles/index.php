@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	
 	$Categories = $site->Modules['Articles']->GetCategories();
 	
@@ -123,5 +123,5 @@
 	}
 	$BodyContent = ob_get_contents();
 	ob_end_clean();
-	include("/home/matt/websites/mandjscreations.com/common/admintemplate.php");
+	include("/var/www/html/common/admintemplate.php");
 ?>

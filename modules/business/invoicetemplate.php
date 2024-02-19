@@ -1,5 +1,5 @@
 <?php
-	include("/home/matt/websites/mandjscreations.com/modules/AppInit.php");
+	include("/var/www/html/modules/AppInit.php");
 	$invoice = LoadClass(SiteRoot . '/modules/classes/business/Invoice');
 	$customer = LoadClass(SiteRoot . '/modules/classes/business/Customer');
 	$invoice->load($_GET['InvoiceID']);

@@ -47,7 +47,7 @@
 	
 	define('SiteRoot','/var/www/html');
 	
-	//$SiteRoot = '/home/matt/websites/mandjscreations.com';
+	//$SiteRoot = '/var/www/html';
 	
 	session_start();
 	
@@ -90,7 +90,7 @@
 	switch ($_SERVER['HTTP_HOST']){
 		case 'www.mandjscreations.com':
 			$site->load(1);
-			$SiteRoot = '/home/matt/websites/mandjscreations.com';
+			$SiteRoot = '/var/www/html';
 			break;
 		case 'www.cantercreekmontana.com':
 			$site->load(2);
