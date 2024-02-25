@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	
 	if (array_key_exists('ContactUs', $_POST)) {
 		ob_start();

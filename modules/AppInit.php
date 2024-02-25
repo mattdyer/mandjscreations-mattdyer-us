@@ -45,9 +45,7 @@
 	
 	set_error_handler("customErrorHandler");
 	
-	define('SiteRoot','/var/www/html');
-	
-	//$SiteRoot = '/var/www/html';
+	define('SiteRoot', $_SERVER['DOCUMENT_ROOT']);
 	
 	session_start();
 	
@@ -90,15 +88,12 @@
 	switch ($_SERVER['HTTP_HOST']){
 		case 'www.mandjscreations.com':
 			$site->load(1);
-			$SiteRoot = '/var/www/html';
 			break;
 		case 'www.cantercreekmontana.com':
 			$site->load(2);
-			$SiteRoot = '/home/matt/websites/cantercreekmontana.com';
 			break;
 		default:
 			$site->load(1);
-			$SiteRoot = '/var/www/html';
 	}
 	
 	

@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	$invoice = LoadClass(SiteRoot . '/modules/classes/business/Invoice');
 	$customer = LoadClass(SiteRoot . '/modules/classes/business/Customer');
 	$invoice->load($_GET['InvoiceID']);

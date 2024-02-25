@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	try{
 		$ArticleID = $_GET['ArticleID'];
 		$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');

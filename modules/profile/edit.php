@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	
 	if(!$site->UserLoggedIn()){
 		header('Location: /modules/profile/login.php');

@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/templateinit.php");
+	include(SiteRoot . "/modules/templateinit.php");
 ?>
 
 <?php

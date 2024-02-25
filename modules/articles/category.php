@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	$CategoryID = $_GET['CategoryID'];
 	$category = LoadClass(SiteRoot . '/modules/classes/articles/Category');
 	try{

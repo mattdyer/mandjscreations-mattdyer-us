@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	$category = LoadClass(SiteRoot . '/modules/classes/articles/Category');
 	
 	if (array_key_exists('CategoryID', $_GET)) {
@@ -38,5 +38,5 @@
 ?>
 
 <?php
-	include("/var/www/html/common/admintemplate.php");
+	include(SiteRoot . "/common/admintemplate.php");
 ?>

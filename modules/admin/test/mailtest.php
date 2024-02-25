@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	
 	//define the receiver of the email
 	$to = 'madmatt1220@gmail.com';

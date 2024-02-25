@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	
 	$customer = LoadClass(SiteRoot . '/modules/classes/business/Customer');
 	
@@ -52,5 +52,5 @@
 ?>
  
 <?php
-	include("/var/www/html/common/admintemplate.php");
+	include(SiteRoot . "/common/admintemplate.php");
 ?>

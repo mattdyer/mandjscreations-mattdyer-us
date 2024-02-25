@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	
 	$Categories = $site->Modules['Articles']->GetCategories();
 	
@@ -123,5 +123,5 @@
 	}
 	$BodyContent = ob_get_contents();
 	ob_end_clean();
-	include("/var/www/html/common/admintemplate.php");
+	include(SiteRoot . "/common/admintemplate.php");
 ?>

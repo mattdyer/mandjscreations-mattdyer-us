@@ -1,5 +1,5 @@
 <?php
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	$ScriptName = $_GET['currentPage'];
 	$chatUser = LoadClass(SiteRoot . '/modules/classes/chat/ChatUser');
 	if($site->UserLoggedIn()){

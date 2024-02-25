@@ -1,6 +1,6 @@
 <?php 
-	define('SiteRoot','/var/www/html');
-	/*include("/var/www/html/common/classlibrary.php");*/
+	define('SiteRoot', _SERVER['DOCUMENT_ROOT']);
+	
 	function LoadClass($ClassPath){
 		require_once($ClassPath . '.php');
 		$ClassName = basename($ClassPath);

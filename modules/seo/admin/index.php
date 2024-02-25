@@ -1,6 +1,6 @@
 <?php
 	$RequireLogin = true;
-	include("/var/www/html/modules/AppInit.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/modules/AppInit.php");
 	
 	if (array_key_exists('DeletePageID', $_GET)) {
 		$page = LoadClass(SiteRoot . '/modules/classes/seo/Page');
@@ -25,5 +25,5 @@
  ?>
  
 <?php
-	include("/var/www/html/common/admintemplate.php");
+	include(SiteRoot . "/common/admintemplate.php");
 ?>

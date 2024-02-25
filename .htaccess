@@ -1,7 +1,7 @@
-#RewriteEngine on
+RewriteEngine on
 
 
-#RewriteRule ^sitemap\.xml$ sitemapxml.php
-#RewriteRule ^article/([0-9]+)/[a-zA-Z0-9-]+ modules/articles/article.php?ArticleID=$1&Redirected=1$2
-#RewriteRule ^category/([0-9]+)/[a-zA-Z0-9-]+ modules/articles/category.php?CategoryID=$1&Redirected=1$2
-#RewriteRule ^profile/([0-9]+)/[a-zA-Z0-9-]+ modules/profile/index.php?UserID=$1&Redirected=1$2
+RewriteRule ^sitemap\.xml$ sitemapxml.php
+RewriteRule ^article/([0-9]+)/[a-zA-Z0-9-]+ modules/articles/article.php?ArticleID=$1&Redirected=1$2
+RewriteRule ^category/([0-9]+)/[a-zA-Z0-9-]+ modules/articles/category.php?CategoryID=$1&Redirected=1$2
+RewriteRule ^profile/([0-9]+)/[a-zA-Z0-9-]+ modules/profile/index.php?UserID=$1&Redirected=1$2

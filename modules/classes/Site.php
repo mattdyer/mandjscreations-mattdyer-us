@@ -7,10 +7,10 @@
 		
 		function LoginUser($Email,$Password,$AdminLogin){
 			$UserQuery = $this->DoQuery("SELECT UserID, PasswordSalt, Password FROM Users WHERE SiteID = " . $this->get('SiteID') . " AND Email = '" . $Email . "'");
-			if(mysql_num_rows($UserQuery) == 0){
+			if($UserQuery->num_rows == 0){
 				throw new Exception('Email address not found.');
-			}elseif(mysql_num_rows($UserQuery) == 1){
-				while($row = mysql_fetch_array($UserQuery)){
+			}elseif($UserQuery->num_rows == 1){
+				while($row = $UserQuery->fetch_array()){
 					$PasswordSalt = $row['PasswordSalt'];
 					$QueryPassword = $row['Password'];
 					$UserID = $row['UserID'];

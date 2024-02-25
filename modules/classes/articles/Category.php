@@ -10,7 +10,7 @@
 			
 			$CategoryArray = array();
 			
-			while($row = mysql_fetch_array($Categories)){
+			while($row = $Categories->fetch_array()){
 				$category = new Category();
 				$category->load($row['CategoryID']);
 				$CategoryArray[] = $category;
@@ -26,7 +26,7 @@
 			
 			$ArticleArray = array();
 			
-			while($row = mysql_fetch_array($Articles)){
+			while($row = $Articles->fetch_array()){
 				$HistoryFound = false;
 				$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');
 				$article->load($row['ArticleID']);

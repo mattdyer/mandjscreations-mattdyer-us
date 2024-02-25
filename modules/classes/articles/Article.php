@@ -19,7 +19,7 @@
 			
 			$CommentArray = array();
 			
-			while($row = mysql_fetch_array($Comments)){
+			while($row = $Comments->fetch_array()){
 				$comment = LoadClass(SiteRoot . '/modules/classes/articles/Comment');
 				$comment->load($row['CommentID']);
 				$CommentArray[] = $comment;
@@ -34,7 +34,7 @@
 			if(strlen($this->get('ArticleHistoryID')) > 0){
 				$Articles = $this->DoQuery("SELECT ArticleID FROM Articles WHERE ArticleHistoryID = " . $this->get('ArticleHistoryID') . " AND ArticleID != " . $this->get('ArticleID') . " ORDER BY DateEntered");
 				
-				while($row = mysql_fetch_array($Articles)){
+				while($row = $Articles->fetch_array()){
 					$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');
 					$article->load($row['ArticleID']);
 					$ArticleArray[] = $article;
