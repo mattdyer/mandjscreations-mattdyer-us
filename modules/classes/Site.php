@@ -6,7 +6,7 @@
 		}
 		
 		function LoginUser($Email,$Password,$AdminLogin){
-			$UserQuery = $this->DoQuery("SELECT UserID, PasswordSalt, Password FROM Users WHERE SiteID = " . $this->get('SiteID') . " AND Email = '" . $Email . "'");
+			$UserQuery = $this->DoQuery("SELECT UserID, PasswordSalt, Password FROM Users WHERE SiteID = ? AND Email = ?", [$this->get('SiteID'), $Email], 'is');
 			if($UserQuery->num_rows == 0){
 				throw new Exception('Email address not found.');
 			}elseif($UserQuery->num_rows == 1){
@@ -33,7 +33,7 @@
 				}else{
 					throw new Exception('Incorrect password or email address.');
 				}
-			}elseif($UserQuery->num_rows() > 1){
+			}elseif($UserQuery->num_rows > 1){
 				throw new Exception('More than one user with the same email address.');
 			}
 		}
@@ -44,7 +44,7 @@
 									   FROM Modules M
 									   LEFT OUTER JOIN ModuleAssn MA
 									   ON M.ModuleID = MA.ModuleID
-									   WHERE MA.SiteID = " . $this->get('SiteID'));
+									   WHERE MA.SiteID = ?", [$this->get('SiteID')], 's');
 			
 			while($row = $Modules->fetch_array()){
 				$ClassPath = $row['ClassPath'];
@@ -57,7 +57,7 @@
 		}
 		
 		function GetUsers(){
-			$Users = $this->DoQuery("SELECT UserID FROM Users WHERE SiteID =" . $this->get('SiteID') . ";");
+			$Users = $this->DoQuery("SELECT UserID FROM Users WHERE SiteID =?;", [$this->get('SiteID')], 'i');
 			
 			$UserArray = array();
 			

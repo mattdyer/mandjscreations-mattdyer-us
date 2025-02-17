@@ -13,7 +13,7 @@
 		}
 		
 		function LoadOrCreatyByUserID($UserID,$Name,$SiteID){
-			$FindUser = $this->DoQuery("SELECT ChatUserID FROM Chat_ChatUsers WHERE UserID = $UserID ORDER BY DateEntered DESC LIMIT 1");
+			$FindUser = $this->DoQuery("SELECT ChatUserID FROM Chat_ChatUsers WHERE UserID = ? ORDER BY DateEntered DESC LIMIT 1", [$UserID], 'i');
 			
 			if($FindUser->num_rows == 0){
 				$this->set('SiteID',$SiteID);
@@ -40,13 +40,13 @@
 										   LEFT OUTER JOIN Chat_ChatUsers C ON M.ChatUserID = C.ChatUserID
 										   WHERE M.DateEntered > DATE_ADD(NOW(),INTERVAL -24 HOUR) AND M.FriendMessage = 0
 										   ORDER BY M.DateEntered DESC
-										   LIMIT 20");
+										   LIMIT 20", [], '');
 			
 			$Messages = array();
 			
 			while($row = $MessageQuery->fetch_array()){
-				list($date,$time) = split(' ',$row['DateEntered']);
-				list($hour,$minute,$second) = split(':',$time);
+				list($date,$time) = explode(' ',$row['DateEntered']);
+				list($hour,$minute,$second) = explode(':',$time);
 				if($hour >= 12){
 					if($hour == 12){
 						$fixedhour = $hour;
@@ -74,8 +74,8 @@
 			$MessageQuery = $this->DoQuery("SELECT C.ChatUserID, C.Name, M.MessageID, M.Message, M.DateEntered, M.FriendID, M.UserID
 										   FROM Chat_Messages M
 										   LEFT OUTER JOIN Chat_ChatUsers C ON M.ChatUserID = C.ChatUserID
-										   WHERE M.DateEntered > DATE_ADD(NOW(),INTERVAL -24 HOUR) AND M.FriendMessage = 1 AND (M.UserID = " . $this->get('UserID') . " OR M.FriendID = " . $this->get('UserID') . ")
-										   ORDER BY M.DateEntered DESC");
+										   WHERE M.DateEntered > DATE_ADD(NOW(),INTERVAL -24 HOUR) AND M.FriendMessage = 1 AND (M.UserID = ? OR M.FriendID = ?)
+										   ORDER BY M.DateEntered DESC", [$this->get('UserID'), $this->get('UserID')], 'ii');
 			
 			$Messages = array();
 			
@@ -114,7 +114,7 @@
 		function getOtherUsers($ScriptName){
 			/*$ChatUserQuery = $this->DoQuery("SELECT C.ChatUserID, C.Name FROM Chat_ChatUsers C WHERE C.LastPage = '$ScriptName' AND C.LastPageDate > DATE_ADD(NOW(),INTERVAL -10 SECOND)");*/
 			
-			$ChatUserQuery = $this->DoQuery("SELECT C.ChatUserID, C.Name, U.UserID FROM Chat_ChatUsers C LEFT OUTER JOIN Users U ON C.UserID = U.UserID WHERE C.LastPageDate > DATE_ADD(NOW(),INTERVAL -10 SECOND)");
+			$ChatUserQuery = $this->DoQuery("SELECT C.ChatUserID, C.Name, U.UserID FROM Chat_ChatUsers C LEFT OUTER JOIN Users U ON C.UserID = U.UserID WHERE C.LastPageDate > DATE_ADD(NOW(),INTERVAL -10 SECOND)", [], '');
 			
 			$ChatUsers = array();
 			
@@ -132,7 +132,7 @@
 		}
 		
 		function getOtherConversations($ScriptName){
-			$ChatUserQuery = $this->DoQuery("SELECT COUNT(C.ChatUserID) AS TotalUsers, C.LastPage FROM Chat_ChatUsers C WHERE C.LastPage != '$ScriptName' AND C.LastPageDate > DATE_ADD(NOW(),INTERVAL -10 SECOND) GROUP BY C.LastPage");
+			$ChatUserQuery = $this->DoQuery("SELECT COUNT(C.ChatUserID) AS TotalUsers, C.LastPage FROM Chat_ChatUsers C WHERE C.LastPage != ? AND C.LastPageDate > DATE_ADD(NOW(),INTERVAL -10 SECOND) GROUP BY C.LastPage", [$ScriptName], 'i');
 		
 			$Conversations = array();
 			

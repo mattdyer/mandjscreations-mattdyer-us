@@ -22,7 +22,7 @@
 		function GetArticles(){
 			$CategoryID = $this->get('CategoryID');
 			//$Articles = $this->DoQuery("SELECT ArticleID FROM Articles WHERE CategoryID = $CategoryID ORDER BY DateEntered DESC");
-			$Articles = $this->DoQuery("SELECT ArticleID FROM Articles WHERE CategoryID = $CategoryID ORDER BY DateEntered DESC");
+			$Articles = $this->DoQuery("SELECT ArticleID FROM Articles WHERE CategoryID = ? ORDER BY DateEntered DESC", [$CategoryID], 'i');
 			
 			$ArticleArray = array();
 			

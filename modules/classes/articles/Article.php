@@ -15,7 +15,7 @@
 		}
 		
 		function GetComments(){
-			$Comments = $this->DoQuery("SELECT CommentID FROM Comments WHERE ArticleID = " . $this->get('ArticleID') . " ORDER BY DateEntered");
+			$Comments = $this->DoQuery("SELECT CommentID FROM Comments WHERE ArticleID = ? ORDER BY DateEntered", [$this->get('ArticleID')], 'i');
 			
 			$CommentArray = array();
 			
@@ -32,7 +32,7 @@
 			$ArticleArray = array();
 			
 			if(strlen($this->get('ArticleHistoryID')) > 0){
-				$Articles = $this->DoQuery("SELECT ArticleID FROM Articles WHERE ArticleHistoryID = " . $this->get('ArticleHistoryID') . " AND ArticleID != " . $this->get('ArticleID') . " ORDER BY DateEntered");
+				$Articles = $this->DoQuery("SELECT ArticleID FROM Articles WHERE ArticleHistoryID = ? AND ArticleID != ? ORDER BY DateEntered", [$this->get('ArticleHistoryID'), $this->get('ArticleID')], 'ii');
 				
 				while($row = $Articles->fetch_array()){
 					$article = LoadClass(SiteRoot . '/modules/classes/articles/Article');

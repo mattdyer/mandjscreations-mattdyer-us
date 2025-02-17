@@ -18,7 +18,7 @@
 			
 			$ActionArray = array();
 			
-			while($row = mysql_fetch_array($Actions)){
+			while($row = $Actions->fetch_array()){
 				$JSAction = array("ActionID" => $row['ActionID'],"Type" => $row['Type'],"Data" => $row['Data']);
 				$ActionArray[] = $JSAction;
 			}

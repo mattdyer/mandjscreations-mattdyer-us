@@ -7,8 +7,10 @@
 		
 		function LoadByScriptName($ScriptName, $QueryString, $SiteID){
 			
-			$FindPage = $this->DoQuery("SELECT PageID FROM SEO_Pages WHERE SiteID = " . $SiteID . " AND ScriptName = '" . $ScriptName . "'");
-			$FindPage2 = $this->DoQuery("SELECT PageID FROM SEO_Pages WHERE SiteID = " . $SiteID . " AND ScriptName LIKE '" . $ScriptName . '?' . $QueryString . "%'");
+			$LikeString = $ScriptName . "?" . $QueryString . "%";
+
+			$FindPage = $this->DoQuery("SELECT PageID FROM SEO_Pages WHERE SiteID = ? AND ScriptName = ?", [$SiteID, $ScriptName], 'is');
+			$FindPage2 = $this->DoQuery("SELECT PageID FROM SEO_Pages WHERE SiteID = ? AND ScriptName LIKE ?", [$SiteID, $LikeString], 'is');
 			
 			if($FindPage->num_rows == 0 && $FindPage2->num_rows == 0){
 				throw new Exception('No record was found for script name ' . $ScriptName);

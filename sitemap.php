@@ -5,23 +5,23 @@
 ?>
 	<h2>Sitemap</h2>
 	<ul>
-		<li><a href="http://www.mandjscreations.com/">Home</a></li>
-		<li><a href="http://www.mandjscreations.com/service/contact.php">Contact Us</a></li>
-		<li><a href="http://www.mandjscreations.com/index.php">Home</a></li>
-		<li><a href="http://www.mandjscreations.com/modules/articles/index.php">Articles</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/life/index.php">Life Game</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/fish/index.php">Fish Game</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/canvaspaint/index.php">Canvas Paint Emulator</a></li>
-		<li><a href="http://www.mandjscreations.com/modules/profile/login.php">Profile Login</a></li>
-		<li><a href="http://www.mandjscreations.com/modules/profile/signup.php">Profile Signup</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/transition/index.php">Transitions Project</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/htmledit/index.php">Javascript HTML Editor Newest Version</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/jsrts/index.php">Javascript Real Time Strategy Game</a></li>
-		<li><a href="http://www.mandjscreations.com/service/about.php">About Us</a></li>
-		<li><a href="http://www.mandjscreations.com/service/privacy.php">Privacy Policy</a></li>
-		<li><a href="http://www.mandjscreations.com/sitemap.php">Sitemap</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/transition/index2.php">CSS Transitions</a></li>
-		<li><a href="http://www.mandjscreations.com/projects/htmledit/alpha1/index.php">Javascript HTML Editor Alpha 1</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/">Home</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/service/contact.php">Contact Us</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/index.php">Home</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/modules/articles/index.php">Articles</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/life/index.php">Life Game</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/fish/index.php">Fish Game</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/canvaspaint/index.php">Canvas Paint Emulator</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/modules/profile/login.php">Profile Login</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/modules/profile/signup.php">Profile Signup</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/transition/index.php">Transitions Project</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/htmledit/index.php">Javascript HTML Editor Newest Version</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/jsrts/index.php">Javascript Real Time Strategy Game</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/service/about.php">About Us</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/service/privacy.php">Privacy Policy</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/sitemap.php">Sitemap</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/transition/index2.php">CSS Transitions</a></li>
+		<li><a href="http://mandjscreations.mattdyer.us/projects/htmledit/alpha1/index.php">Javascript HTML Editor Alpha 1</a></li>
 <?php
 	$Categories = $site->Modules['Articles']->GetCategories();
 	$Articles = $site->Modules['Articles']->GetArticles();

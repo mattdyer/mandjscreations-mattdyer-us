@@ -153,7 +153,7 @@
 					echo '<div><a href="/modules/profile/signup.php">Signup</a></div>';
 				}
 			?>
-			<div><a href="http://twitter.com/themadtw1tter" target="_blank"><img src="/images/twitter.png" style="border:none;" /></a></div>
+			<div><img src="/images/twitter.png" style="border:none;" /></div>
 		</div>
 		<div class="mainBody">
 			<div class="leftNav">

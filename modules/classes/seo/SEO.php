@@ -6,7 +6,7 @@
 		}
 		
 		function LoadBySiteID($SiteID){
-			$SEO_Settings = $this->DoQuery("SELECT SettingsID FROM SEO_Settings WHERE SiteID = " . $SiteID);
+			$SEO_Settings = $this->DoQuery("SELECT SettingsID FROM SEO_Settings WHERE SiteID = ?", [$SiteID], 'i');
 			
 			while($row = $SEO_Settings->fetch_array()){
 				$this->load($row['SettingsID']);

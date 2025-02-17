@@ -59,11 +59,11 @@
 		}
 		
 		function getFriendRequests(){
-			$FriendRequestQuery = $this->DoQuery("SELECT F.FriendID, F.UserID, U.FirstName, U.LastName FROM Profile_Friends F LEFT OUTER JOIN Users U ON F.UserID = U.UserID WHERE F.FriendUserID = " . $this->get('UserID') . " AND F.Approved = 0");
+			$FriendRequestQuery = $this->DoQuery("SELECT F.FriendID, F.UserID, U.FirstName, U.LastName FROM Profile_Friends F LEFT OUTER JOIN Users U ON F.UserID = U.UserID WHERE F.FriendUserID = ? AND F.Approved = 0", [$this->get('UserID')], 'i');
 			
 			$FriendRequestArray = array();
 			
-			while($row = mysql_fetch_array($FriendRequestQuery)){
+			while($row = $FriendRequestQuery->fetch_array(MYSQLI_ASSOC)){
 				$FriendRequestArray[] = $row;
 			}
 			
@@ -75,20 +75,20 @@
 										   FROM Profile_Friends F
 										   LEFT OUTER JOIN Users U
 										   ON F.UserID = U.UserID
-										   WHERE F.FriendUserID = " . $this->get('UserID') . " AND F.Approved = 1");
+										   WHERE F.FriendUserID = ? AND F.Approved = 1", [$this->get('UserID')], 'i');
 			
 			$FriendQuery2 = $this->DoQuery("SELECT F.FriendID, U.UserID, U.FirstName, U.LastName
 										   FROM Profile_Friends F
 										   LEFT OUTER JOIN Users U
 										   ON F.FriendUserID = U.UserID
-										   WHERE F.UserID = " . $this->get('UserID') . " AND F.Approved = 1");
+										   WHERE F.UserID = ? AND F.Approved = 1", [$this->get('UserID')], 'i');
 			
 			$FriendArray = array();
 			
-			while($row = mysql_fetch_array($FriendQuery1)){
+			while($row = $FriendQuery1->fetch_array(MYSQLI_ASSOC)){
 				$FriendArray[] = $row;
 			}
-			while($row = mysql_fetch_array($FriendQuery2)){
+			while($row = $FriendQuery2->fetch_array(MYSQLI_ASSOC)){
 				$FriendArray[] = $row;
 			}
 			
@@ -96,11 +96,11 @@
 		}
 		
 		function getArticleComments(){
-			$Comments = $this->DoQuery("SELECT CommentID FROM Comments WHERE UserID = " . $this->get('UserID') . " ORDER BY DateEntered");
+			$Comments = $this->DoQuery("SELECT CommentID FROM Comments WHERE UserID = ? ORDER BY DateEntered", [$this->get('UserID')], 'i');
 			
 			$CommentArray = array();
 			
-			while($row = mysql_fetch_array($Comments)){
+			while($row = $Comments->fetch_array(MYSQLI_ASSOC)){
 				$comment = LoadClass(SiteRoot . '/modules/classes/articles/Comment');
 				$comment->load($row['CommentID']);
 				$CommentArray[] = $comment;

@@ -16,7 +16,7 @@
 			
 			$GameArray = array();
 			
-			while($row = mysql_fetch_array($Games)){
+			while($row = $Games->fetch_array()){
 				$game = LoadClass(SiteRoot . '/modules/classes/jsrts/Game');
 				$game->load($row['GameID']);
 				$Players = $game->getPlayers();
@@ -33,7 +33,7 @@
 			
 			$PlayerArray = array();
 			
-			while($row = mysql_fetch_array($Players)){
+			while($row = $Players->fetch_array()){
 				$player = LoadClass(SiteRoot . '/modules/classes/jsrts/Player');
 				$player->load($row['PlayerID']);
 				$JSPlayer = array("PlayerID" => $player->get('PlayerID'),"Name" => $player->get('Name'),"Ready" => $player->get('ReadyToStart'));

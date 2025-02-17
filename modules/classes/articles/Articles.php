@@ -6,7 +6,7 @@
 		}
 		
 		function LoadBySiteID($SiteID){
-			$Article_Settings = $this->DoQuery("SELECT SettingsID FROM Articles_Settings WHERE SiteID = " . $SiteID);
+			$Article_Settings = $this->DoQuery("SELECT SettingsID FROM Articles_Settings WHERE SiteID = ?", [$SiteID], 'i');
 			
 			while($row = $Article_Settings->fetch_array()){
 				$this->load($row['SettingsID']);
@@ -14,7 +14,7 @@
 		}
 		
 		function GetCategories(){
-			$Categories = $this->DoQuery("SELECT CategoryID FROM Categories WHERE ParentID IS NULL AND SiteID = " . $this->get('SiteID'));
+			$Categories = $this->DoQuery("SELECT CategoryID FROM Categories WHERE ParentID IS NULL AND SiteID = ?", [$this->get('SiteID')], 'i');
 			
 			$CategoryArray = array();
 			
@@ -32,7 +32,7 @@
 									   FROM Articles A 
 									   LEFT OUTER JOIN Categories C 
 									   ON A.CategoryID = C.CategoryID 
-									   WHERE C.SiteID = " . $this->get('SiteID'));
+									   WHERE C.SiteID = ?", [$this->get('SiteID')], 'i');
 			
 			$ArticleArray = array();
 			
@@ -50,8 +50,8 @@
 									   FROM Articles A 
 									   LEFT OUTER JOIN Categories C 
 									   ON A.CategoryID = C.CategoryID 
-									   WHERE C.SiteID = " . $this->get('SiteID') . "
-									   ORDER BY A.Views DESC, A.DateEntered DESC;");
+									   WHERE C.SiteID = ?
+									   ORDER BY A.Views DESC, A.DateEntered DESC;", [$this->get('SiteID')], 'i');
 			
 			$ArticleArray = array();
 			
@@ -69,9 +69,9 @@
 									   FROM Articles A 
 									   LEFT OUTER JOIN Categories C 
 									   ON A.CategoryID = C.CategoryID 
-									   WHERE C.SiteID = " . $this->get('SiteID') . "
+									   WHERE C.SiteID = ?
 									   ORDER BY A.DateEntered DESC
-									   Limit 100;");
+									   Limit 100;", [$this->get('SiteID')], 'i');
 			
 			$ArticleArray = array();
 			
