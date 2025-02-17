@@ -39,7 +39,7 @@
 			
 			$this->QueryDatabase = $this->Database;
 			
-			while($row = $columns->fetch_array(MYSQLI_ASSOC)){
+			while($row = $columns->fetch_array()){
 				
 				$fulltype = $row['COLUMN_TYPE'];
 				
